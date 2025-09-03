@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,20 @@
     <link rel="stylesheet" href="/static/style.css">
 
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <nav>
             <div class="logo">🏥 HealthCare</div>
             <ul class="nav-links">
-                <li><a href="#" class="nav-item" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('doctors')">Find Doctors</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('appointments')">My Appointments</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('profile')">Profile</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-outline" onclick="showPage('login')">Login</a>
-                <a href="#" class="btn btn-primary" onclick="showPage('register')">Sign Up</a>
+                <li><a href="#" class="nav-item" >Home</a></li>
+                <li><a href="#" class="nav-item">Find Doctors</a></li>
+                <li><a href="#" class="nav-item">My Appointments</a></li>
+                <li><a href="#" class="nav-item">Profile</a></li>
+            </ul>      <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary" >Sign Up</a>
             </div>
         </nav>
     </header>
@@ -69,73 +70,13 @@
             </div>
         </div>
 
-        <!-- Login Page -->
-        <div id="login" class="page">
-            <h2>Login to Your Account</h2>
-            <form>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <p style="margin-top: 1rem;">
-                    Don't have an account? <a href="#" onclick="showPage('register')">Sign up here</a>
-                </p>
-            </form>
-        </div>
-
-        <!-- Register Page -->
-        <div id="register" class="page">
-            <h2>Create Your Account</h2>
-            <form>
-                <div class="form-group">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg_email">Email Address</label>
-                    <input type="email" id="reg_email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="number" id="age" min="1" max="120" required>
-                </div>
-                <div class="form-group">
-                    <label for="gender">Gender</label>
-                    <select id="gender" required>
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="insurance">Insurance Provider</label>
-                    <input type="text" id="insurance" placeholder="Optional">
-                </div>
-                <div class="form-group">
-                    <label for="reg_password">Password</label>
-                    <input type="password" id="reg_password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Account</button>
-                <p style="margin-top: 1rem;">
-                    Already have an account? <a href="#" onclick="showPage('login')">Login here</a>
-                </p>
-            </form>
-        </div>
+      
+     
 
         <!-- Find Doctors Page -->
         <div id="doctors" class="page">
             <h2>Find Doctors</h2>
-            
+
             <!-- Search Filters -->
             <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
@@ -189,7 +130,8 @@
                         <div class="rating">⭐⭐⭐⭐⭐ 4.8 (120 reviews)</div>
                         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">15+ years experience</p>
                         <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
+                                Appointment</button>
                         </div>
                     </div>
                 </div>
@@ -205,7 +147,8 @@
                         <div class="rating">⭐⭐⭐⭐⭐ 4.9 (95 reviews)</div>
                         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">10+ years experience</p>
                         <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
+                                Appointment</button>
                         </div>
                     </div>
                 </div>
@@ -221,7 +164,8 @@
                         <div class="rating">⭐⭐⭐⭐ 4.6 (200 reviews)</div>
                         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">12+ years experience</p>
                         <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
+                                Appointment</button>
                         </div>
                     </div>
                 </div>
@@ -237,7 +181,8 @@
                         <div class="rating">⭐⭐⭐⭐⭐ 4.7 (80 reviews)</div>
                         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">8+ years experience</p>
                         <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
+                                Appointment</button>
                         </div>
                     </div>
                 </div>
@@ -247,7 +192,7 @@
         <!-- Booking Page -->
         <div id="booking" class="page">
             <h2>Book Appointment</h2>
-            
+
             <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
                 <h3>Dr. Ahmed Khan - Cardiologist</h3>
                 <p>📍 Karachi, Pakistan | 💰 Rs. 2,500</p>
@@ -282,7 +227,8 @@
 
                 <div class="form-group">
                     <label>Reason for Visit</label>
-                    <textarea rows="3" placeholder="Brief description of your symptoms or reason for consultation"></textarea>
+                    <textarea rows="3"
+                        placeholder="Brief description of your symptoms or reason for consultation"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -297,7 +243,7 @@
         <!-- My Appointments Page -->
         <div id="appointments" class="page">
             <h2>My Appointments</h2>
-            
+
             <div style="margin-bottom: 2rem;">
                 <button class="btn btn-outline" style="margin-right: 1rem;">Upcoming</button>
                 <button class="btn btn-outline" style="margin-right: 1rem;">Past</button>
@@ -324,8 +270,10 @@
                         <td>In-Person</td>
                         <td><span class="status confirmed">Confirmed</span></td>
                         <td>
-                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
-                            <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
+                            <button class="btn btn-outline"
+                                style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
+                            <button class="btn"
+                                style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
                         </td>
                     </tr>
                     <tr>
@@ -337,8 +285,10 @@
                         <td>Telehealth</td>
                         <td><span class="status pending">Pending</span></td>
                         <td>
-                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
-                            <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
+                            <button class="btn btn-outline"
+                                style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
+                            <button class="btn"
+                                style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
                         </td>
                     </tr>
                     <tr>
@@ -350,7 +300,8 @@
                         <td>In-Person</td>
                         <td><span class="status cancelled">Cancelled</span></td>
                         <td>
-                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Book Again</button>
+                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Book
+                                Again</button>
                         </td>
                     </tr>
                 </tbody>
@@ -360,7 +311,7 @@
         <!-- Profile Page -->
         <div id="profile" class="page">
             <h2>My Profile</h2>
-            
+
             <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <h3>Personal Information</h3>
@@ -414,43 +365,53 @@
 
                 <div class="dashboard-card" style="grid-column: 1 / -1;">
                     <h3>Medical Records & Documents</h3>
-                    <div style="border: 2px dashed #ccc; padding: 2rem; text-align: center; border-radius: 10px; margin: 1rem 0;">
+                    <div
+                        style="border: 2px dashed #ccc; padding: 2rem; text-align: center; border-radius: 10px; margin: 1rem 0;">
                         <p style="margin-bottom: 1rem;">📄 Upload your medical documents</p>
                         <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png" style="margin-bottom: 1rem;">
                         <p style="font-size: 0.9rem; color: #666;">Supported formats: PDF, JPG, PNG (Max 10MB each)</p>
                     </div>
-                    
+
                     <div style="margin-top: 2rem;">
                         <h4 style="margin-bottom: 1rem;">Uploaded Documents</h4>
                         <div style="display: grid; gap: 1rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
                                 <div>
                                     <strong>Lab Report - Blood Test</strong>
                                     <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Dec 5, 2024</p>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
-                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                    <button class="btn btn-outline"
+                                        style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn"
+                                        style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
                                 <div>
                                     <strong>X-Ray Chest</strong>
                                     <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Nov 28, 2024</p>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
-                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                    <button class="btn btn-outline"
+                                        style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn"
+                                        style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
                                 </div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
                                 <div>
                                     <strong>Prescription - Dr. Hassan</strong>
                                     <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Nov 15, 2024</p>
                                 </div>
                                 <div>
-                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
-                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                    <button class="btn btn-outline"
+                                        style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn"
+                                        style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -511,7 +472,7 @@
         <!-- Reschedule Page -->
         <div id="reschedule" class="page">
             <h2>Reschedule Appointment</h2>
-            
+
             <div style="background: #fff3cd; color: #856404; padding: 1rem; border-radius: 10px; margin-bottom: 2rem;">
                 <strong>Current Appointment:</strong> Dr. Ahmed Khan - Dec 15, 2024 at 10:00 AM
             </div>
@@ -549,7 +510,7 @@
         <!-- Medical History Page -->
         <div id="medical-history" class="page">
             <h2>Medical History</h2>
-            
+
             <div class="dashboard-grid">
                 <div class="dashboard-card">
                     <h3>Basic Information</h3>
@@ -583,14 +544,17 @@
                 <div class="dashboard-card">
                     <h3>Allergies</h3>
                     <div style="margin-bottom: 1rem;">
-                        <input type="text" placeholder="Add new allergy" style="width: calc(100% - 80px); margin-right: 10px;">
+                        <input type="text" placeholder="Add new allergy"
+                            style="width: calc(100% - 80px); margin-right: 10px;">
                         <button class="btn btn-outline" style="padding: 0.75rem; width: 70px;">Add</button>
                     </div>
                     <div>
-                        <div style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
+                        <div
+                            style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
                             Penicillin ❌
                         </div>
-                        <div style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
+                        <div
+                            style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
                             Nuts ❌
                         </div>
                     </div>
@@ -601,10 +565,13 @@
                     <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
                         <thead>
                             <tr style="background: #f8f9ff;">
-                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Medication</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Medication
+                                </th>
                                 <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Dosage</th>
-                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Frequency</th>
-                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Start Date</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Frequency
+                                </th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Start Date
+                                </th>
                                 <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Actions</th>
                             </tr>
                         </thead>
@@ -615,24 +582,29 @@
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">Once daily</td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">Jan 2024</td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
-                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Remove</button>
+                                    <button class="btn"
+                                        style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Remove</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
-                                    <input type="text" placeholder="Medication name" style="width: 100%; border: none; background: transparent;">
+                                    <input type="text" placeholder="Medication name"
+                                        style="width: 100%; border: none; background: transparent;">
                                 </td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
-                                    <input type="text" placeholder="Dosage" style="width: 100%; border: none; background: transparent;">
+                                    <input type="text" placeholder="Dosage"
+                                        style="width: 100%; border: none; background: transparent;">
                                 </td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
-                                    <input type="text" placeholder="Frequency" style="width: 100%; border: none; background: transparent;">
+                                    <input type="text" placeholder="Frequency"
+                                        style="width: 100%; border: none; background: transparent;">
                                 </td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
                                     <input type="date" style="width: 100%; border: none; background: transparent;">
                                 </td>
                                 <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
-                                    <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Add</button>
+                                    <button class="btn btn-primary"
+                                        style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Add</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -641,12 +613,16 @@
 
                 <div class="dashboard-card" style="grid-column: 1 / -1;">
                     <h3>Past Medical Conditions</h3>
-                    <textarea rows="4" placeholder="List any past medical conditions, surgeries, or significant health events..." style="width: 100%; padding: 1rem; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;">Hypertension diagnosed in 2023, managed with medication. No surgeries to date.</textarea>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Update Medical History</button>
+                    <textarea rows="4"
+                        placeholder="List any past medical conditions, surgeries, or significant health events..."
+                        style="width: 100%; padding: 1rem; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;">Hypertension diagnosed in 2023, managed with medication. No surgeries to date.</textarea>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Update Medical
+                        History</button>
                 </div>
             </div>
         </div>
     </main>
 
 </body>
+
 </html>
