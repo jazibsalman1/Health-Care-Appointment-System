@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🏥 HealthCare</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-item" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-item" onclick="showPage('doctors')">Find Doctors</a></li>
+                <li><a href="#" class="nav-item" onclick="showPage('appointments')">My Appointments</a></li>
+                <li><a href="#" class="nav-item" onclick="showPage('profile')">Profile</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline" onclick="showPage('login')">Login</a>
+                <a href="#" class="btn btn-primary" onclick="showPage('register')">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Your Health, Our Priority</h1>
+                <p>Book appointments with top doctors instantly. Get quality healthcare at your fingertips.</p>
+                <a href="#" class="btn btn-primary" onclick="showPage('doctors')">Find Doctors Now</a>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Expert Doctors</h3>
+                    <p>Connect with certified healthcare professionals across all specialties.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Easy Booking</h3>
+                    <p>Schedule appointments instantly with our user-friendly booking system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Telehealth</h3>
+                    <p>Consult with doctors from the comfort of your home via video calls.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Smart Reminders</h3>
+                    <p>Never miss an appointment with SMS and email notifications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Medical Records</h3>
+                    <p>Keep all your medical history and reports in one secure place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Easy Reschedule</h3>
+                    <p>Change or cancel appointments with just a few clicks.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login" class="page">
+            <h2>Login to Your Account</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p style="margin-top: 1rem;">
+                    Don't have an account? <a href="#" onclick="showPage('register')">Sign up here</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register" class="page">
+            <h2>Create Your Account</h2>
+            <form>
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg_email">Email Address</label>
+                    <input type="email" id="reg_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" min="1" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="insurance">Insurance Provider</label>
+                    <input type="text" id="insurance" placeholder="Optional">
+                </div>
+                <div class="form-group">
+                    <label for="reg_password">Password</label>
+                    <input type="password" id="reg_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <p style="margin-top: 1rem;">
+                    Already have an account? <a href="#" onclick="showPage('login')">Login here</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Find Doctors Page -->
+        <div id="doctors" class="page">
+            <h2>Find Doctors</h2>
+            
+            <!-- Search Filters -->
+            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="specialty">Specialty</label>
+                        <select id="specialty">
+                            <option value="">All Specialties</option>
+                            <option value="cardiology">Cardiologist</option>
+                            <option value="dentistry">Dentist</option>
+                            <option value="dermatology">Dermatologist</option>
+                            <option value="general">General Physician</option>
+                            <option value="orthopedic">Orthopedic</option>
+                            <option value="pediatric">Pediatrician</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="Enter city">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="insurance_filter">Insurance</label>
+                        <select id="insurance_filter">
+                            <option value="">Any Insurance</option>
+                            <option value="adamjee">Adamjee Insurance</option>
+                            <option value="efu">EFU Life</option>
+                            <option value="jubilee">Jubilee Insurance</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label for="language">Language</label>
+                        <select id="language">
+                            <option value="">Any Language</option>
+                            <option value="urdu">Urdu</option>
+                            <option value="english">English</option>
+                            <option value="sindhi">Sindhi</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors List -->
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-avatar">👨‍⚕️</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Ahmed Khan</h3>
+                        <p><strong>Cardiologist</strong></p>
+                        <p>📍 Karachi, Pakistan</p>
+                        <p>🕐 Mon-Fri: 9AM-5PM</p>
+                        <p>💰 Consultation: Rs. 2,500</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.8 (120 reviews)</div>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">15+ years experience</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doctor-avatar">👩‍⚕️</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Fatima Ali</h3>
+                        <p><strong>Dentist</strong></p>
+                        <p>📍 Lahore, Pakistan</p>
+                        <p>🕐 Mon-Sat: 10AM-8PM</p>
+                        <p>💰 Consultation: Rs. 1,800</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9 (95 reviews)</div>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">10+ years experience</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doctor-avatar">👨‍⚕️</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Muhammad Hassan</h3>
+                        <p><strong>General Physician</strong></p>
+                        <p>📍 Islamabad, Pakistan</p>
+                        <p>🕐 Daily: 8AM-10PM</p>
+                        <p>💰 Consultation: Rs. 1,500</p>
+                        <div class="rating">⭐⭐⭐⭐ 4.6 (200 reviews)</div>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">12+ years experience</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card">
+                    <div class="doctor-avatar">👩‍⚕️</div>
+                    <div class="doctor-info">
+                        <h3>Dr. Aisha Sheikh</h3>
+                        <p><strong>Dermatologist</strong></p>
+                        <p>📍 Hyderabad, Pakistan</p>
+                        <p>🕐 Mon-Fri: 2PM-7PM</p>
+                        <p>💰 Consultation: Rs. 2,000</p>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.7 (80 reviews)</div>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">8+ years experience</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Page -->
+        <div id="booking" class="page">
+            <h2>Book Appointment</h2>
+            
+            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
+                <h3>Dr. Ahmed Khan - Cardiologist</h3>
+                <p>📍 Karachi, Pakistan | 💰 Rs. 2,500</p>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label>Select Date</label>
+                    <input type="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Time Slots</label>
+                    <div class="slots-grid">
+                        <div class="slot" onclick="selectSlot(this)">9:00 AM</div>
+                        <div class="slot" onclick="selectSlot(this)">10:00 AM</div>
+                        <div class="slot" onclick="selectSlot(this)">11:00 AM</div>
+                        <div class="slot" onclick="selectSlot(this)">2:00 PM</div>
+                        <div class="slot" onclick="selectSlot(this)">3:00 PM</div>
+                        <div class="slot" onclick="selectSlot(this)">4:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Consultation Type</label>
+                    <select required>
+                        <option value="">Select Type</option>
+                        <option value="in-person">In-Person Visit</option>
+                        <option value="telehealth">Video Call (Telehealth)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for Visit</label>
+                    <textarea rows="3" placeholder="Brief description of your symptoms or reason for consultation"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Special Instructions (Optional)</label>
+                    <textarea rows="2" placeholder="Any special requirements or notes"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+
+        <!-- My Appointments Page -->
+        <div id="appointments" class="page">
+            <h2>My Appointments</h2>
+            
+            <div style="margin-bottom: 2rem;">
+                <button class="btn btn-outline" style="margin-right: 1rem;">Upcoming</button>
+                <button class="btn btn-outline" style="margin-right: 1rem;">Past</button>
+                <button class="btn btn-outline">Cancelled</button>
+            </div>
+
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date & Time</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Dr. Ahmed Khan</strong><br>
+                            <small>Cardiologist</small>
+                        </td>
+                        <td>Dec 15, 2024<br>10:00 AM</td>
+                        <td>In-Person</td>
+                        <td><span class="status confirmed">Confirmed</span></td>
+                        <td>
+                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
+                            <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Dr. Fatima Ali</strong><br>
+                            <small>Dentist</small>
+                        </td>
+                        <td>Dec 18, 2024<br>2:00 PM</td>
+                        <td>Telehealth</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>
+                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem; margin-right: 0.5rem;">Reschedule</button>
+                            <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Dr. Muhammad Hassan</strong><br>
+                            <small>General Physician</small>
+                        </td>
+                        <td>Dec 10, 2024<br>4:00 PM</td>
+                        <td>In-Person</td>
+                        <td><span class="status cancelled">Cancelled</span></td>
+                        <td>
+                            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Book Again</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile" class="page">
+            <h2>My Profile</h2>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Personal Information</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="Muhammad Ali" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="muhammad.ali@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value="+92 300 1234567" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" value="35" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select required>
+                                <option value="male" selected>Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Insurance Information</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Insurance Provider</label>
+                            <input type="text" value="Adamjee Insurance">
+                        </div>
+                        <div class="form-group">
+                            <label>Policy Number</label>
+                            <input type="text" value="POL123456789">
+                        </div>
+                        <div class="form-group">
+                            <label>Group Number</label>
+                            <input type="text" value="GRP001">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Insurance</button>
+                    </form>
+                </div>
+
+                <div class="dashboard-card" style="grid-column: 1 / -1;">
+                    <h3>Medical Records & Documents</h3>
+                    <div style="border: 2px dashed #ccc; padding: 2rem; text-align: center; border-radius: 10px; margin: 1rem 0;">
+                        <p style="margin-bottom: 1rem;">📄 Upload your medical documents</p>
+                        <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png" style="margin-bottom: 1rem;">
+                        <p style="font-size: 0.9rem; color: #666;">Supported formats: PDF, JPG, PNG (Max 10MB each)</p>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Uploaded Documents</h4>
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                                <div>
+                                    <strong>Lab Report - Blood Test</strong>
+                                    <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Dec 5, 2024</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                                <div>
+                                    <strong>X-Ray Chest</strong>
+                                    <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Nov 28, 2024</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
+                                <div>
+                                    <strong>Prescription - Dr. Hassan</strong>
+                                    <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Nov 15, 2024</p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
+                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card" style="grid-column: 1 / -1;">
+                    <h3>Notification Preferences</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <div>
+                            <h4 style="margin-bottom: 1rem;">Reminder Settings</h4>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    Email reminders 24 hours before appointment
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    SMS reminders 2 hours before appointment
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox">
+                                    Push notifications on mobile app
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 1rem;">Communication Preferences</h4>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    Appointment confirmations
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox">
+                                    Health tips and newsletters
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox">
+                                    Special offers and promotions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reschedule Page -->
+        <div id="reschedule" class="page">
+            <h2>Reschedule Appointment</h2>
+            
+            <div style="background: #fff3cd; color: #856404; padding: 1rem; border-radius: 10px; margin-bottom: 2rem;">
+                <strong>Current Appointment:</strong> Dr. Ahmed Khan - Dec 15, 2024 at 10:00 AM
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label>Select New Date</label>
+                    <input type="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Time Slots</label>
+                    <div class="slots-grid">
+                        <div class="slot" onclick="selectSlot(this)">9:00 AM</div>
+                        <div class="slot" onclick="selectSlot(this)">11:00 AM</div>
+                        <div class="slot" onclick="selectSlot(this)">2:00 PM</div>
+                        <div class="slot" onclick="selectSlot(this)">3:00 PM</div>
+                        <div class="slot" onclick="selectSlot(this)">4:00 PM</div>
+                        <div class="slot" onclick="selectSlot(this)">5:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason for Rescheduling</label>
+                    <textarea rows="3" placeholder="Please let us know why you need to reschedule"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary">Confirm Reschedule</button>
+                    <button type="button" class="btn btn-outline" onclick="showPage('appointments')">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Medical History Page -->
+        <div id="medical-history" class="page">
+            <h2>Medical History</h2>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Basic Information</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Blood Type</label>
+                            <select>
+                                <option value="">Select Blood Type</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" placeholder="e.g., 175">
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" placeholder="e.g., 70">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Allergies</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <input type="text" placeholder="Add new allergy" style="width: calc(100% - 80px); margin-right: 10px;">
+                        <button class="btn btn-outline" style="padding: 0.75rem; width: 70px;">Add</button>
+                    </div>
+                    <div>
+                        <div style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
+                            Penicillin ❌
+                        </div>
+                        <div style="background: #f8d7da; color: #721c24; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin: 0.25rem; font-size: 0.9rem;">
+                            Nuts ❌
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card" style="grid-column: 1 / -1;">
+                    <h3>Current Medications</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                        <thead>
+                            <tr style="background: #f8f9ff;">
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Medication</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Dosage</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Frequency</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Start Date</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid #e1e5e9;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">Lisinopril</td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">10mg</td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">Once daily</td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">Jan 2024</td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <button class="btn" style="background: #dc3545; color: white; padding: 0.25rem 0.5rem; font-size: 0.8rem;">Remove</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <input type="text" placeholder="Medication name" style="width: 100%; border: none; background: transparent;">
+                                </td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <input type="text" placeholder="Dosage" style="width: 100%; border: none; background: transparent;">
+                                </td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <input type="text" placeholder="Frequency" style="width: 100%; border: none; background: transparent;">
+                                </td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <input type="date" style="width: 100%; border: none; background: transparent;">
+                                </td>
+                                <td style="padding: 0.75rem; border: 1px solid #e1e5e9;">
+                                    <button class="btn btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="dashboard-card" style="grid-column: 1 / -1;">
+                    <h3>Past Medical Conditions</h3>
+                    <textarea rows="4" placeholder="List any past medical conditions, surgeries, or significant health events..." style="width: 100%; padding: 1rem; border: 2px solid #e1e5e9; border-radius: 10px; resize: vertical;">Hypertension diagnosed in 2023, managed with medication. No surgeries to date.</textarea>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Update Medical History</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
