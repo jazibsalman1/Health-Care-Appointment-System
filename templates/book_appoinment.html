@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Medical Appointment</title>
+<link rel="stylesheet" href="/static/booking.css">
+<link rel="stylesheet" href="/static/footer.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    {% include "nav.html" %}
+    <br>
+    <div class="container">
+        <div class="header">
+            <h1>📅 Book Your Appointment</h1>
+            <p>Schedule your medical consultation with our healthcare professionals</p>
+        </div>
+
+        <div class="form-container">
+            <form action="#" method="POST">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Personal Information</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dob">Date of Birth <span class="required">*</span></label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address"
+                            placeholder="Street address, city, state, zip code"></textarea>
+                    </div>
+                </div>
+
+                <!-- Appointment Details Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Appointment Details</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointmentDate">Preferred Date <span class="required">*</span></label>
+                            <input type="date" id="appointmentDate" name="appointmentDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="doctor">Preferred Doctor</label>
+                            <select id="doctor" name="doctor">
+                                <option value="">Any Available Doctor</option>
+                                <option value="dr-smith">Dr. John Smith - General Medicine</option>
+                                <option value="dr-johnson">Dr. Sarah Johnson - Cardiology</option>
+                                <option value="dr-brown">Dr. Michael Brown - Dermatology</option>
+                                <option value="dr-davis">Dr. Emily Davis - Pediatrics</option>
+                                <option value="dr-wilson">Dr. Robert Wilson - Orthopedics</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Preferred Time Slot <span class="required">*</span></label>
+                        <div class="time-slots">
+                            <div class="time-slot">
+                                <input type="radio" id="time1" name="timeSlot" value="09:00" required>
+                                <label for="time1">9:00 AM</label>
+                            </div>
+                            <div class="time-slot">
+                                <input type="radio" id="time2" name="timeSlot" value="10:00" required>
+                                <label for="time2">10:00 AM</label>
+                            </div>
+                            <div class="time-slot">
+                                <input type="radio" id="time3" name="timeSlot" value="11:00" required>
+                                <label for="time3">11:00 AM</label>
+                            </div>
+                            <div class="time-slot">
+                                <input type="radio" id="time4" name="timeSlot" value="14:00" required>
+                                <label for="time4">2:00 PM</label>
+                            </div>
+                            <div class="time-slot">
+                                <input type="radio" id="time5" name="timeSlot" value="15:00" required>
+                                <label for="time5">3:00 PM</label>
+                            </div>
+                            <div class="time-slot">
+                                <input type="radio" id="time6" name="timeSlot" value="16:00" required>
+                                <label for="time6">4:00 PM</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointmentType">Appointment Type <span class="required">*</span></label>
+                        <select id="appointmentType" name="appointmentType" required>
+                            <option value="">Select Appointment Type</option>
+                            <option value="consultation">General Consultation</option>
+                            <option value="follow-up">Follow-up Visit</option>
+                            <option value="check-up">Annual Check-up</option>
+                            <option value="vaccination">Vaccination</option>
+                            <option value="lab-results">Lab Results Review</option>
+                            <option value="physical-exam">Physical Examination</option>
+                            <option value="specialist-referral">Specialist Referral</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Medical Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Medical Information</h2>
+
+                    <div class="form-group">
+                        <label for="symptoms">Current Symptoms or Concerns</label>
+                        <textarea id="symptoms" name="symptoms"
+                            placeholder="Please describe your current symptoms, concerns, or reason for the visit"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medications">Current Medications</label>
+                        <textarea id="medications" name="medications"
+                            placeholder="List any medications you are currently taking"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="allergies">Known Allergies</label>
+                        <textarea id="allergies" name="allergies"
+                            placeholder="List any known allergies (medications, food, environmental)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="insurance">Insurance Provider</label>
+                        <input type="text" id="insurance" name="insurance" placeholder="Your insurance company name">
+                    </div>
+                </div>
+
+                <!-- Emergency Notice -->
+                <div class="emergency-notice">
+                    <strong>⚠️ Medical Emergency Notice:</strong> If you are experiencing a medical emergency, please
+                    call 911 or go to your nearest emergency room immediately. Do not use this form for urgent medical
+                    needs.
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h2 class="section-title">Additional Information</h2>
+
+                    <div class="form-group">
+                        <label>Visit Type</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="inPerson" name="visitType" value="in-person" checked>
+                                <label for="inPerson">In-Person Visit</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="telehealth" name="visitType" value="telehealth">
+                                <label for="telehealth">Telehealth (Virtual)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes"
+                            placeholder="Any additional information you'd like us to know"></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">I consent to the collection and use of my personal information for medical
+                            purposes <span class="required">*</span></label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="reminders" name="reminders">
+                        <label for="reminders">I would like to receive appointment reminders via email and SMS</label>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <div class="button-group">
+                        <button type="reset" class="btn-reset">Clear Form</button>
+                        <button type="submit" class="btn-submit">Book Appointment</button>
+                    </div>
+                    <p style="margin-top: 15px; color: #666; font-size: 0.9em; text-align: center;">
+                        We will contact you within 24 hours to confirm your appointment.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div> <br>
+    {% include "footer.html" %}
+</body>
+
+</html>
