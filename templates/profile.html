@@ -48,24 +48,7 @@
                 </form>
             </div>
 
-            <div class="dashboard-card">
-                <h3>Insurance Information</h3>
-                <form>
-                    <div class="form-group">
-                        <label>Insurance Provider</label>
-                        <input type="text" value="Adamjee Insurance">
-                    </div>
-                    <div class="form-group">
-                        <label>Policy Number</label>
-                        <input type="text" value="POL123456789">
-                    </div>
-                    <div class="form-group">
-                        <label>Group Number</label>
-                        <input type="text" value="GRP001">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update Insurance</button>
-                </form>
-            </div>
+            
 
             <div class="dashboard-card" style="grid-column: 1 / -1;">
                 <h3>Medical Records & Documents</h3>
@@ -79,32 +62,8 @@
                 <div style="margin-top: 2rem;">
                     <h4 style="margin-bottom: 1rem;">Uploaded Documents</h4>
                     <div style="display: grid; gap: 1rem;">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
-                            <div>
-                                <strong>Lab Report - Blood Test</strong>
-                                <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Dec 5, 2024</p>
-                            </div>
-                            <div>
-                                <button class="btn btn-outline"
-                                    style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
-                                <button class="btn"
-                                    style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
-                            </div>
-                        </div>
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
-                            <div>
-                                <strong>X-Ray Chest</strong>
-                                <p style="font-size: 0.9rem; color: #666; margin: 0;">Uploaded on Nov 28, 2024</p>
-                            </div>
-                            <div>
-                                <button class="btn btn-outline"
-                                    style="padding: 0.25rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem;">View</button>
-                                <button class="btn"
-                                    style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; font-size: 0.8rem;">Delete</button>
-                            </div>
-                        </div>
+    
+                      
                         <div
                             style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9ff; border-radius: 10px;">
                             <div>
@@ -122,54 +81,7 @@
                 </div>
             </div>
 
-            <div class="dashboard-card" style="grid-column: 1 / -1;">
-                <h3>Notification Preferences</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div>
-                        <h4 style="margin-bottom: 1rem;">Reminder Settings</h4>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" checked>
-                                Email reminders 24 hours before appointment
-                            </label>
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" checked>
-                                SMS reminders 2 hours before appointment
-                            </label>
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox">
-                                Push notifications on mobile app
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 style="margin-bottom: 1rem;">Communication Preferences</h4>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" checked>
-                                Appointment confirmations
-                            </label>
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox">
-                                Health tips and newsletters
-                            </label>
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox">
-                                Special offers and promotions
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Preferences</button>
-            </div>
+       
         </div>
     </div>
     {% include "footer.html" %}

@@ -42,6 +42,13 @@ async def find_doctor(request: Request):
 
     
 
+@app.get("/book_appoinment")
+async def book_appoinment(request: Request):
+    return templates.TemplateResponse("book_appoinment.html", {"request": request})
+
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

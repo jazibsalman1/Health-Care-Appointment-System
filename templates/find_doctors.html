@@ -14,46 +14,7 @@
         <div id="doctors" class="page">
             <h2>Find Doctors</h2>
 
-            <!-- Search Filters -->
-            <div style="background: #f8f9ff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="specialty">Specialty</label>
-                        <select id="specialty">
-                            <option value="">All Specialties</option>
-                            <option value="cardiology">Cardiologist</option>
-                            <option value="dentistry">Dentist</option>
-                            <option value="dermatology">Dermatologist</option>
-                            <option value="general">General Physician</option>
-                            <option value="orthopedic">Orthopedic</option>
-                            <option value="pediatric">Pediatrician</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="Enter city">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="insurance_filter">Insurance</label>
-                        <select id="insurance_filter">
-                            <option value="">Any Insurance</option>
-                            <option value="adamjee">Adamjee Insurance</option>
-                            <option value="efu">EFU Life</option>
-                            <option value="jubilee">Jubilee Insurance</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="language">Language</label>
-                        <select id="language">
-                            <option value="">Any Language</option>
-                            <option value="urdu">Urdu</option>
-                            <option value="english">English</option>
-                            <option value="sindhi">Sindhi</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
+         
             <!-- Doctors List -->
             <div class="doctors-grid">
                 <div class="doctor-card">
@@ -64,65 +25,17 @@
                         <p>📍 Karachi, Pakistan</p>
                         <p>🕐 Mon-Fri: 9AM-5PM</p>
                         <p>💰 Consultation: Rs. 2,500</p>
-                        <div class="rating">⭐⭐⭐⭐⭐ 4.8 (120 reviews)</div>
+                       
                         <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">15+ years experience</p>
                         <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
-                                Appointment</button>
+                           <a href="/book_appoinment"> <button class="btn btn-primary" style="width: 100%;">Book
+                                Appointment</button></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="doctor-card">
-                    <div class="doctor-avatar">👩‍⚕️</div>
-                    <div class="doctor-info">
-                        <h3>Dr. Fatima Ali</h3>
-                        <p><strong>Dentist</strong></p>
-                        <p>📍 Lahore, Pakistan</p>
-                        <p>🕐 Mon-Sat: 10AM-8PM</p>
-                        <p>💰 Consultation: Rs. 1,800</p>
-                        <div class="rating">⭐⭐⭐⭐⭐ 4.9 (95 reviews)</div>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">10+ years experience</p>
-                        <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
-                                Appointment</button>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="doctor-card">
-                    <div class="doctor-avatar">👨‍⚕️</div>
-                    <div class="doctor-info">
-                        <h3>Dr. Muhammad Hassan</h3>
-                        <p><strong>General Physician</strong></p>
-                        <p>📍 Islamabad, Pakistan</p>
-                        <p>🕐 Daily: 8AM-10PM</p>
-                        <p>💰 Consultation: Rs. 1,500</p>
-                        <div class="rating">⭐⭐⭐⭐ 4.6 (200 reviews)</div>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">12+ years experience</p>
-                        <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
-                                Appointment</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="doctor-card">
-                    <div class="doctor-avatar">👩‍⚕️</div>
-                    <div class="doctor-info">
-                        <h3>Dr. Aisha Sheikh</h3>
-                        <p><strong>Dermatologist</strong></p>
-                        <p>📍 Hyderabad, Pakistan</p>
-                        <p>🕐 Mon-Fri: 2PM-7PM</p>
-                        <p>💰 Consultation: Rs. 2,000</p>
-                        <div class="rating">⭐⭐⭐⭐⭐ 4.7 (80 reviews)</div>
-                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">8+ years experience</p>
-                        <div style="margin-top: 1rem;">
-                            <button class="btn btn-primary" onclick="showPage('booking')" style="width: 100%;">Book
-                                Appointment</button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
           {% include "footer.html" %}
