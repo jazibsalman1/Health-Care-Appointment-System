@@ -6,10 +6,10 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   
+
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          
+            background: linear-gradient(135deg, #41218c 0%, #764ba2 100%);
+
         }
 
         .container {
@@ -151,7 +151,7 @@
 
         /* Pages Container */
         .page {
-          display: block;
+            display: block;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             margin: 2rem 0;

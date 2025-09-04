@@ -6,25 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthCare - Home</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/footer.css">
 
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">🏥 HealthCare</div>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-item" >Home</a></li>
-                <li><a href="/find_doctor" class="nav-item">Find Doctors</a></li>
-                <li><a href="/appoinments" class="nav-item">My Appointments</a></li>
-                <li><a href="/profile" class="nav-item">Profile</a></li>
-            </ul>      <div class="auth-buttons">
-                <a href="/login" class="btn btn-outline">Login</a>
-                <a href="/signup" class="btn btn-primary" >Sign Up</a>
-            </div>
-        </nav>
-    </header>
+    {% include "nav.html" %}
 
     <!-- Main Content -->
     <main class="container">
@@ -70,18 +57,10 @@
             </div>
         </div>
 
-      
-     
-
-    
-
-     
-
-
-        <!-- Reschedule Page -->
      
     </main>
 
+  {% include "footer.html" %}
 </body>
 
 </html>
