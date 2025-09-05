@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 import uvicorn
 import sqlite3
 
+
 app = FastAPI()
 
 # Mount static folder
@@ -30,9 +31,9 @@ async def signup_page(request: Request):
 async def profile(request: Request):
     return templates.TemplateResponse("profile.html", {"request": request})
 
-@app.get("/appointments")
+@app.get("/appoinments")
 async def appointments(request: Request):
-    return templates.TemplateResponse("appointments.html", {"request": request})
+    return templates.TemplateResponse("appoinments.html", {"request": request})
 
 @app.get("/find_doctor")
 async def find_doctor(request: Request):
@@ -74,8 +75,8 @@ with sqlite3.connect("hospital.db") as conn:
 
 
 # --- Form submit ---
-@app.post("/submit_appointment")
-async def submit_appointment(request: Request):
+@app.post("/submit_booking")
+async def submit_booking(request: Request):
     form = await request.form()
 
     with sqlite3.connect("hospital.db") as conn:
