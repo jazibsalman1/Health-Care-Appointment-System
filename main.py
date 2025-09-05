@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse , HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
 import sqlite3
@@ -32,8 +32,15 @@ async def profile(request: Request):
     return templates.TemplateResponse("profile.html", {"request": request})
 
 @app.get("/appoinments")
-async def appointments(request: Request):
-    return templates.TemplateResponse("appoinments.html", {"request": request})
+async def appoinments(request: Request):
+    # DB se appointments fetch karo
+    with sqlite3.connect("hospital.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM appointments")
+        appointments = cursor.fetchall()
+
+    return templates.TemplateResponse("appoinments.html", {"request": request, "appointments": appointments})
+
 
 @app.get("/find_doctor")
 async def find_doctor(request: Request):
