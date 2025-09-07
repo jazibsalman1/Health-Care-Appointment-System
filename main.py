@@ -1,12 +1,15 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse , HTMLResponse
 from fastapi.templating import Jinja2Templates
+from starlette.middleware.sessions import SessionMiddleware   # 👈 ye add karo
 import uvicorn
 import sqlite3
 
-
 app = FastAPI()
+
+# Secret key for session (random strong string use karna)
+app.add_middleware(SessionMiddleware, secret_key="supersecretkey")
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -14,43 +17,49 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # Templates folder
 templates = Jinja2Templates(directory="templates")
 
+
 # --- Routes for pages ---
 @app.get("/")
 async def index_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+
 @app.get("/login")
 async def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
+
 
 @app.get("/signup")
 async def signup_page(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
-@app.get("/profile")
-async def profile(request: Request):
-    return templates.TemplateResponse("profile.html", {"request": request})
 
 @app.get("/appoinments")
 async def appoinments(request: Request):
-    # DB se appointments fetch karo
-    with sqlite3.connect("hospital.db") as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM appointments")
-        appointments = cursor.fetchall()
+    user_email = request.session.get("email")   # 👈 session se email nikalo
+    appointments = []
 
-    return templates.TemplateResponse("appoinments.html", {"request": request, "appointments": appointments})
+    if user_email:
+        with sqlite3.connect("hospital.db") as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM appointments WHERE email = ?", (user_email,))
+            appointments = cursor.fetchall()
+
+    return templates.TemplateResponse(
+        "appoinments.html", 
+        {"request": request, "appointments": appointments}
+    )
 
 
 @app.get("/find_doctor")
 async def find_doctor(request: Request):
     return templates.TemplateResponse("find_doctors.html", {"request": request})
 
+
 @app.get("/book_appoinment")
 async def book_appointment(request: Request):
     return templates.TemplateResponse("book_appoinment.html", {"request": request})
-
-
 
 
 # --- DB setup ---
@@ -79,6 +88,11 @@ with sqlite3.connect("hospital.db") as conn:
             reminders INTEGER
         )
     """)
+
+
+
+# for profile 
+
 
 
 # --- Form submit ---
@@ -117,7 +131,11 @@ async def submit_booking(request: Request):
         ))
         conn.commit()
 
+    # 👇 yahan email session me save ho jaayegi
+    request.session["email"] = form.get("email")
+
     return RedirectResponse(url="/appoinments", status_code=303)
+
 
 
 if __name__ == "__main__":
