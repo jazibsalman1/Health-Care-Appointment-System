@@ -9,7 +9,7 @@ import sqlite3
 app = FastAPI()
 
 # Secret key for session (random strong string use karna)
-app.add_middleware(SessionMiddleware, secret_key="supersecretkey")
+app.add_middleware(SessionMiddleware, secret_key="abrakadabra123456")
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -87,12 +87,6 @@ with sqlite3.connect("hospital.db") as conn:
         )
     """)
 
-
-
-# for profile 
-
-
-
 # --- Form submit ---
 @app.post("/submit_booking")
 async def submit_booking(request: Request):
@@ -129,11 +123,10 @@ async def submit_booking(request: Request):
         ))
         conn.commit()
 
-    # 👇 yahan email session me save ho jaayegi
+    #  yahan email session me save ho jaayegi
     request.session["email"] = form.get("email")
 
     return RedirectResponse(url="/appoinments", status_code=303)
-
 
 
 if __name__ == "__main__":
