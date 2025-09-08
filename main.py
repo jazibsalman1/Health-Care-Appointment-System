@@ -2,14 +2,36 @@ from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse , HTMLResponse
 from fastapi.templating import Jinja2Templates
-from starlette.middleware.sessions import SessionMiddleware   # 👈 ye add karo
+from starlette.middleware.sessions import SessionMiddleware 
 import uvicorn
+from dotenv import load_dotenv
+from authlib.integrations.starlette_client import OAuth
 import sqlite3
+import os
 
 app = FastAPI()
+load_dotenv()
+
+CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+SECRET_KEY = os.getenv("SESSION_SECRET", "super-secret-session-key")
+
+if not CLIENT_ID or not CLIENT_SECRET:
+    raise RuntimeError("Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in environment")
+
+
+oauth = OAuth()
+oauth.register(
+    name="google",
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
+    client_kwargs={"scope": "openid email profile"},
+)
+
 
 # Secret key for session (random strong string use karna)
-app.add_middleware(SessionMiddleware, secret_key="abrakadabra123456")
+app.add_middleware(SessionMiddleware, secret_key="SECRET_KEY")
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -24,11 +46,27 @@ async def index_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+
 @app.get("/login")
-async def login_page(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+async def login(request: Request):
+    # Redirect user to Google authorization URL
+    redirect_uri = request.url_for("auth")  
+    return await oauth.google.authorize_redirect(request, redirect_uri)
 
-
+@app.get("/auth")
+async def auth(request: Request):
+    # Google redirects back here after consent
+    token = await oauth.google.authorize_access_token(request)
+    # fetch userinfo from userinfo endpoint
+    userinfo = await oauth.google.parse_id_token(request, token)  # returns id_token claims if present
+    # store minimal user in session
+    request.session["user"] = {
+        "sub": userinfo.get("sub"),
+        "email": userinfo.get("email"),
+        "name": userinfo.get("name"),
+        "picture": userinfo.get("picture"),
+    }
+    return RedirectResponse(url="/")    
 
 
 

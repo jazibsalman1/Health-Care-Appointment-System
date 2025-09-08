@@ -12,6 +12,17 @@
 
 <body>
     {% include "nav.html" %}
+    {% if user %}
+      <h2>Welcome, {{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+      {% if user.picture %}
+        <img src="{{ user.picture }}" alt="avatar" width="100">
+      {% endif %}
+      <p><a href="/logout">Logout</a></p>
+    {% else %}
+      <h2>You are not logged in</h2>
+      <p><a href="/login">Login with Google</a></p>
+    {% endif %}
 
     <!-- Main Content -->
     <main class="container">
