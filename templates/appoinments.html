@@ -6,49 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments</title>
     <link rel="stylesheet" href="/static/style.css">
-        <link rel="stylesheet" href="/static/footer.css">
-
+    <link rel="stylesheet" href="/static/footer.css">
 </head>
 
 <body>
-        {% include "nav.html" %}
-  <main class="container">
-<form action="/update_appoiment" method="post">
-          <!-- My Appointments Page -->
-    <div id="appointments" class="page">
-        <h2>My Appointments</h2>
+    {% include "nav.html" %}
+    <main class="container">
+        <!-- My Appointments Page -->
+        <div id="appointments" class="page">
+            <h2>My Appointments</h2>
 
-
-        <table class="appointments-table">
-            <thead>
-                <tr>
-                    <th>Doctor</th>
-                    <th>Date & Time</th>
-                    <th>Type</th>
-                 
-                    <th>Actions</th>
-                </tr>
-            </thead>
-         {% for appointment in appointments %}
-            <tbody>
-                <tr>
-                    <td>{{ appointment[9] }} </td>
-                    <td>{{ appointment[8] }} </td>
-                    <td>{{ appointment[16] }}</td>
-              
-                    <td>
-                        <button class="btn btn-primary" type="submit">Reschedule</button>
-                     
-                    </td>
-                </tr>
-            </tbody>
-         {% endfor %}
-        </table>
-    </div>
-</form>
-
-  </main>
-  {% include "footer.html" %}
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment['doctor'] }}</td>
+                        <td>{{ appointment['appointmentDate'] }}</td>
+                        <td>{{ appointment['timeSlot'] }}</td>
+                        <td>{{ appointment['appointmentType'] }}</td>
+                        <td>
+                            <a href="/update_booking/{{ appointment['id'] }}" class="btn btn-primary">
+                                Reschedule
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    {% include "footer.html" %}
 </body>
 
 </html>
