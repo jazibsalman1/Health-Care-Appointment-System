@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Appointments</title>
     <link rel="stylesheet" href="/static/style.css">
         <link rel="stylesheet" href="/static/footer.css">
 
@@ -13,7 +13,8 @@
 <body>
         {% include "nav.html" %}
   <main class="container">
-      <!-- My Appointments Page -->
+<form action="/update_appoiment" method="post">
+          <!-- My Appointments Page -->
     <div id="appointments" class="page">
         <h2>My Appointments</h2>
 
@@ -36,7 +37,7 @@
                     <td>{{ appointment[16] }}</td>
               
                     <td>
-                        <button class="btn btn-primary">Reschedule</button>
+                        <button class="btn btn-primary" type="submit">Reschedule</button>
                      
                     </td>
                 </tr>
@@ -44,6 +45,7 @@
          {% endfor %}
         </table>
     </div>
+</form>
 
   </main>
   {% include "footer.html" %}

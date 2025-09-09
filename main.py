@@ -2,17 +2,14 @@ from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse , HTMLResponse
 from fastapi.templating import Jinja2Templates
-from starlette.middleware.sessions import SessionMiddleware 
+from starlette.middleware.sessions import SessionMiddleware   # 👈 ye add karo
 import uvicorn
-from dotenv import load_dotenv
-from authlib.integrations.starlette_client import OAuth
 import sqlite3
-import os
 
 app = FastAPI()
-load_dotenv()
 
-
+# Secret key for session (random strong string use karna)
+app.add_middleware(SessionMiddleware, secret_key="supersecretkey")
 
 # Mount static folder
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -27,15 +24,44 @@ async def index_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-
 @app.get("/login")
-async def login(request: Request):
-   return templates.TemplateResponse("login.html", {"request": request})
+async def login_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+
+
+
+@app.post("/update_appoiment")
+async def update_appoiment(request: Request):
+    return templates.TemplateResponse("update_appoinment.html", {"request": request})
+
+
 @app.get("/signup")
-async def login(request: Request):
-   return templates.TemplateResponse("signup.html", {"request": request})
+async def signup_page(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
 
 
+@app.get("/profile")
+async def profile(request: Request):
+    return templates.TemplateResponse("profile.html", {"request": request})
+
+
+@app.get("/appoinments")
+async def appoinments(request: Request):
+    user_email = request.session.get("email")   # 👈 session se email nikalo
+    appointments = []
+
+    if user_email:
+        with sqlite3.connect("hospital.db") as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM appointments WHERE email = ?", (user_email,))
+            appointments = cursor.fetchall()
+
+    return templates.TemplateResponse(
+        "appoinments.html", 
+        {"request": request, "appointments": appointments}
+    )
 
 
 @app.get("/find_doctor")
@@ -75,6 +101,7 @@ with sqlite3.connect("hospital.db") as conn:
         )
     """)
 
+
 # --- Form submit ---
 @app.post("/submit_booking")
 async def submit_booking(request: Request):
@@ -111,7 +138,7 @@ async def submit_booking(request: Request):
         ))
         conn.commit()
 
-    #  yahan email session me save ho jaayegi
+    # 👇 yahan email session me save ho jaayegi
     request.session["email"] = form.get("email")
 
     return RedirectResponse(url="/appoinments", status_code=303)
