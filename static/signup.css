@@ -1,0 +1,111 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Optional web font (still only HTML+CSS). Remove @import if you prefer system fonts only. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-start: 255, 99, 132;
+    /* pink-ish */
+    --bg-end: 54, 162, 235;
+    /* blue */
+    --card-bg: 255, 255, 255;
+    /* white */
+    --text: 18, 20, 23;
+    --muted: 105, 115, 125;
+    --ring: 99, 102, 241;
+    /* indigo */
+    --success: 34, 197, 94;
+    --shadow: 10, 15, 25;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(var(--text));
+    /* Animated gradient background */
+    background: radial-gradient(1200px 800px at 20% 10%, rgba(var(--bg-start), .35), transparent 60%),
+        radial-gradient(1000px 700px at 80% 90%, rgba(var(--bg-end), .35), transparent 60%),
+        linear-gradient(135deg, rgba(var(--bg-start), .15), rgba(var(--bg-end), .15));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+
+.btn {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(var(--bg-start), 1), rgba(var(--bg-end), 1));
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.footer-text a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}

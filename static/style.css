@@ -4,12 +4,33 @@
             box-sizing: border-box;
         }
 
+        /* Optional web font (still only HTML+CSS). Remove @import if you prefer system fonts only. */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg-start: 255, 99, 132;
+            /* pink-ish */
+            --bg-end: 54, 162, 235;
+            /* blue */
+            --card-bg: 255, 255, 255;
+            /* white */
+            --text: 18, 20, 23;
+            --muted: 105, 115, 125;
+            --ring: 99, 102, 241;
+            /* indigo */
+            --success: 34, 197, 94;
+            --shadow: 10, 15, 25;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
             color: #333;
-            background: linear-gradient(135deg, #41218c 0%, #764ba2 100%);
-
+            color: rgb(var(--text));
+            /* Animated gradient background */
+            background: radial-gradient(1200px 800px at 20% 10%, rgba(var(--bg-start), .35), transparent 60%),
+                radial-gradient(1000px 700px at 80% 90%, rgba(var(--bg-end), .35), transparent 60%),
+                linear-gradient(135deg, rgba(var(--bg-start), .15), rgba(var(--bg-end), .15));
         }
 
         .container {
@@ -111,6 +132,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: black;
         }
 
         .hero p {

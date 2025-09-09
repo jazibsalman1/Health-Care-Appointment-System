@@ -1,167 +1,153 @@
+  
+    /* Optional web font (still only HTML+CSS). Remove @import if you prefer system fonts only. */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+    :root {
+      --bg-start: 255, 99, 132;   /* pink-ish */
+      --bg-end: 54, 162, 235;     /* blue */
+      --card-bg: 255, 255, 255;   /* white */
+      --text: 18, 20, 23;
+      --muted: 105, 115, 125;
+      --ring: 99, 102, 241;       /* indigo */
+      --success: 34, 197, 94;
+      --shadow: 10, 15, 25;
+    }
 
-/* css is done by CLAUDE AI */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: rgb(var(--text));
+      /* Animated gradient background */
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(var(--bg-start), .35), transparent 60%),
+                  radial-gradient(1000px 700px at 80% 90%, rgba(var(--bg-end), .35), transparent 60%),
+                  linear-gradient(135deg, rgba(var(--bg-start), .15), rgba(var(--bg-end), .15));
+      overflow: hidden;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    .noise {
+      position: fixed; inset: 0; pointer-events: none; opacity: .06;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+      mix-blend-mode: overlay;
+    }
 
-        .login-container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
+    .container {
+      position: relative;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      isolation: isolate;
+    }
 
-        .login-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        }
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(var(--card-bg), .6);
+      backdrop-filter: saturate(1.2) blur(14px);
+      -webkit-backdrop-filter: saturate(1.2) blur(14px);
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 24px;
+      box-shadow: 0 15px 45px rgba(var(--shadow), .25), 0 2px 6px rgba(0,0,0,.08);
+      overflow: hidden;
+    }
 
-        .logo {
-            margin-bottom: 40px;
-        }
+    .card-header {
+      padding: 28px 28px 12px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .brand .logo {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(var(--bg-start), .9), rgba(var(--bg-end), .9));
+      display: grid; place-items: center; color: white; font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.35), 0 6px 18px rgba(var(--bg-end), .35);
+    }
+    .brand h1 { font-size: 1.15rem; line-height: 1.2; margin: 0; font-weight: 700; }
+    .brand p { margin: 4px 0 0; color: rgb(var(--muted)); font-size: .9rem; }
 
-        .logo h1 {
-            color: #333;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+    .card-body { padding: 12px 28px 28px; }
 
-        .logo p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
+    form { display: grid; gap: 14px; }
 
-        .subtitle {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-        }
+    .field { position: relative; }
+    .field input[type="email"],
+    .field input[type="password"] {
+      width: 100%;
+      padding: 16px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.8);
+      outline: none;
+      font: inherit;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .field input::placeholder { color: rgba(var(--muted), .8); }
+    .field input:focus { 
+      border-color: rgba(var(--ring), .65);
+      box-shadow: 0 0 0 4px rgba(var(--ring), .15);
+      background: white;
+    }
 
-        .google-btn {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 50px;
-            background: white;
-            color: #333;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
+    .floating-label {
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      background: transparent; padding: 0 6px; color: rgba(var(--muted), .95);
+      transition: all .18s ease; pointer-events: none; font-size: .95rem;
+    }
+    .field input:not(:placeholder-shown) + .floating-label,
+    .field input:focus + .floating-label {
+      top: -9px; transform: none; font-size: .75rem; background: rgba(255,255,255,.9);
+      border-radius: 6px; box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    }
 
-        .google-btn:hover {
-            border-color: #4285f4;
-            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.15);
-            transform: translateY(-2px);
-        }
+    .row {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    }
 
-        .google-btn:active {
-            transform: translateY(0);
-        }
+    .checkbox { display: inline-flex; align-items: center; gap: 8px; font-size: .95rem; }
+    .checkbox input { width: 16px; height: 16px; accent-color: rgb(var(--ring)); }
 
-        .google-icon {
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .link { color: rgb(var(--ring)); text-decoration: none; font-weight: 600; }
+    .link:hover { text-decoration: underline; }
 
-        .google-icon svg {
-            width: 100%;
-            height: 100%;
-        }
+    .btn {
+      width: 100%;
+      border: none; cursor: pointer; font: inherit; font-weight: 700;
+      padding: 14px 16px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(var(--bg-start), 1), rgba(var(--bg-end), 1));
+      color: #fff; box-shadow: 0 10px 24px rgba(var(--bg-end), .35);
+      transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { filter: brightness(1.05); box-shadow: 0 14px 30px rgba(var(--bg-end), .4); }
+    .btn:active { transform: translateY(1px); }
 
-        .divider {
-            margin: 30px 0;
-            position: relative;
-            text-align: center;
-        }
+    .divider { position: relative; text-align: center; margin: 10px 0; color: rgb(var(--muted)); font-size: .9rem; }
+    .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 40%; height: 1px; background: rgba(0,0,0,.1); }
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
 
-        .divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e0e0e0;
-        }
+    .socials { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .social-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 12px; border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.9); padding: 12px 14px; cursor: pointer; text-decoration: none; color: rgb(var(--text)); font-weight: 600;
+      transition: box-shadow .2s ease, transform .06s ease;
+    }
+    .social-btn:hover { box-shadow: 0 6px 18px rgba(var(--shadow), .15); }
+    .social-btn:active { transform: translateY(1px); }
+    .social-btn svg { width: 18px; height: 18px; }
 
-        .divider span {
-            background: white;
-            color: #888;
-            padding: 0 20px;
-            font-size: 14px;
-        }
+    .footnote { margin-top: 14px; text-align: center; color: rgb(var(--muted)); font-size: .92rem; }
 
-        .security-note {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f8f9ff;
-            border-radius: 10px;
-            border-left: 4px solid #4285f4;
-        }
+    /* Accessibility: prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
 
-        .security-note p {
-            color: #666;
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .security-icon {
-            color: #4285f4;
-            margin-right: 8px;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .login-container {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
-                margin: 10px;
-            }
-            
-            .logo h1 {
-                font-size: 2rem;
-            }
-        }
+    /* Small screens tweak */
+    @media (max-width: 380px) {
+      .card { border-radius: 18px; }
+      .brand h1 { font-size: 1rem; }
+    }
