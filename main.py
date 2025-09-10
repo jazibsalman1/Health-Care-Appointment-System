@@ -194,16 +194,22 @@ async def admin_page(request: Request):
     })
 
 
-@app.post("/update_status")
-async def update_status(id: int = Form(...), action: str = Form(...)):
+@app.post("/up-con")
+async def update_status(id: int = Form(...)):
     conn = sqlite3.connect("hospital.db")
     cur = conn.cursor()
-    cur.execute("UPDATE appointments SET status = ? WHERE id = ?", (action, id))
+    cur.execute("UPDATE appointments SET status = ? WHERE id = ?", ("Confirmed", id))
     conn.commit()
     conn.close()
-
-    # redirect back to appointments page
     return RedirectResponse(url="/admin", status_code=303)
+@app.post("/up-can")
+async def update_status(id: int = Form(...)):
+    conn = sqlite3.connect("hospital.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE appointments SET status = ? WHERE id = ?", ("Cancelled", id))
+    conn.commit()
+    conn.close()
+    return RedirectResponse(url="/admin", status_code=303)    
 
 
 if __name__ == "__main__":

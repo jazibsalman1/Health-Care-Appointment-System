@@ -45,24 +45,21 @@
         <td>{{ appointment["appointmentType"] }}</td>
         <td>{{ appointment["appointmentDate"] }}</td>
         <td>{{ appointment["timeSlot"] }}</td>
+        
         <td>
             <span class="status {{ appointment['status']|lower }}">
                 {{ appointment["status"] }}
             </span>
         </td>
         <td>
-            <!-- Confirm button -->
-            <form action="/update_status" method="post" style="display:inline;">
+        
+            <form action="/up-con" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="{{ appointment['id'] }}">
-                <input type="hidden" name="action" value="Confirmed">
-                <button type="submit" class="btn confirm">Confirm</button>
+                <button type="submit" class="btn">Confirm</button>
             </form>
-
-            <!-- Cancel button -->
-            <form action="/update_status" method="post" style="display:inline;">
+              <form action="/up-can" method="post" style="display:inline;"> 
                 <input type="hidden" name="id" value="{{ appointment['id'] }}">
-                <input type="hidden" name="action" value="Canceled">
-                <button type="submit" class="btn danger">Cancel</button>
+                <button type="submit" class="btn" >Cancel</button>
             </form>
         </td>
     </tr>
