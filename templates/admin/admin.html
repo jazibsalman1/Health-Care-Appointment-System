@@ -31,30 +31,43 @@
                         <th>Phone</th>
                         <th>Appointment Type</th>
                         <th>Date</th>
-                          <th>Time Slot</th>
+                        <th>Time Slot</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {% for appointment in appointments %}
-                    <tr>
-                        <td data-label="id">{{ appointment["id"] }}</td>
-                        <td data-label="Patient">{{ appointment[1] }}</td>
-                        <td data-label="Phone">{{ appointment["phone"] }}</td>
-                        <td data-label="appointmentType">{{ appointment["appointmentType"] }}</td>
-                        <td data-label="Date">{{ appointment["appointmentDate"] }}</td>
-                        <td data-label="timeslot" >{{ appointment["timeSlot"] }}</td>
-                        <td data-label="Status"><span class="status pending">Pending</span></td>
-                        <td data-label="Actions">
-                            <div class="actions">
-                                <button class="btn confirm">Confirm</button>
-                                <button class="btn danger">Cancel</button>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
+           <tbody>
+    {% for appointment in appointments %}
+    <tr>
+        <td>{{ appointment["id"] }}</td>
+        <td>{{ appointment["patient"] }}</td>
+        <td>{{ appointment["phone"] }}</td>
+        <td>{{ appointment["appointmentType"] }}</td>
+        <td>{{ appointment["appointmentDate"] }}</td>
+        <td>{{ appointment["timeSlot"] }}</td>
+        <td>
+            <span class="status {{ appointment['status']|lower }}">
+                {{ appointment["status"] }}
+            </span>
+        </td>
+        <td>
+            <!-- Confirm button -->
+            <form action="/update_status" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="{{ appointment['id'] }}">
+                <input type="hidden" name="action" value="Confirmed">
+                <button type="submit" class="btn confirm">Confirm</button>
+            </form>
+
+            <!-- Cancel button -->
+            <form action="/update_status" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="{{ appointment['id'] }}">
+                <input type="hidden" name="action" value="Canceled">
+                <button type="submit" class="btn danger">Cancel</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
 
             </table>
 

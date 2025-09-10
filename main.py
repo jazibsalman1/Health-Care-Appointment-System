@@ -194,6 +194,17 @@ async def admin_page(request: Request):
     })
 
 
+@app.post("/update_status")
+async def update_status(id: int = Form(...), action: str = Form(...)):
+    conn = sqlite3.connect("hospital.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE appointments SET status = ? WHERE id = ?", (action, id))
+    conn.commit()
+    conn.close()
+
+    # redirect back to appointments page
+    return RedirectResponse(url="/admin", status_code=303)
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
