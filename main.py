@@ -49,6 +49,11 @@ async def index_page(request: Request):
 async def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
+
+
+
+
+
 @app.get("/signup")
 async def signup_page(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
@@ -113,6 +118,10 @@ async def submit_booking(request: Request):
     request.session["email"] = form.get("email")
     return RedirectResponse(url="/appoinments", status_code=303)
 
+
+
+
+
 # --- Show update form ---
 @app.get("/update_booking/{id}")
 async def update_booking_form(request: Request, id: int):
@@ -163,6 +172,17 @@ async def update_booking_submit(
         conn.commit()
 
     return RedirectResponse(url="/appoinments", status_code=303)
+
+
+
+
+# admin panel route
+
+
+@app.get("/admin")
+async def admin_panel(request: Request):
+    return templates.TemplateResponse("admin/admin.html", {"request": request})
+
 
 
 if __name__ == "__main__":
