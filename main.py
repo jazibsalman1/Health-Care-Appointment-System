@@ -179,9 +179,19 @@ async def update_booking_submit(
 # admin panel route
 
 
-@app.get("/admin")
-async def admin_panel(request: Request):
-    return templates.TemplateResponse("admin/admin.html", {"request": request})
+@app.get("/admin", response_class=HTMLResponse)
+async def admin_page(request: Request):
+    conn = sqlite3.connect("hospital.db")
+    conn.row_factory = sqlite3.Row  
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM appointments")
+    rows = cursor.fetchall()
+    conn.close()
+
+    return templates.TemplateResponse("admin/admin.html", {
+        "request": request,
+        "appointments": rows
+    })
 
 
 

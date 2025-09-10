@@ -10,57 +10,56 @@
 </head>
 
 <body>
+    <div id="appointments" class="page"></div>
     <div class="container">
         <div class="header">
             <div>
                 <div class="title">Admin Panel — Appointments</div>
-            
+
             </div>
-           
+
         </div>
 
+
         <div class="card">
-          
+
             <table aria-label="Appointments table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Patient</th>
                         <th>Phone</th>
-                        <th>Service</th>
-                        <th>Date & Time</th>
+                        <th>Appointment Type</th>
+                        <th>Date</th>
+                          <th>Time Slot</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- example rows -->
+                    {% for appointment in appointments %}
                     <tr>
-                        <td data-label="#">1</td>
-                        <td data-label="Patient">Ali Khan</td>
-                        <td data-label="Phone">+92 300 1234567</td>
-                        <td data-label="Service">General Checkup</td>
-                        <td data-label="Date & Time">2025-09-12 10:30</td>
+                        <td data-label="id">{{ appointment["id"] }}</td>
+                        <td data-label="Patient">{{ appointment[1] }}</td>
+                        <td data-label="Phone">{{ appointment["phone"] }}</td>
+                        <td data-label="appointmentType">{{ appointment["appointmentType"] }}</td>
+                        <td data-label="Date">{{ appointment["appointmentDate"] }}</td>
+                        <td data-label="timeslot" >{{ appointment["timeSlot"] }}</td>
                         <td data-label="Status"><span class="status pending">Pending</span></td>
                         <td data-label="Actions">
                             <div class="actions">
-                          
                                 <button class="btn confirm">Confirm</button>
                                 <button class="btn danger">Cancel</button>
                             </div>
                         </td>
                     </tr>
-
-                  
-
-                 
-
-      
-
+                    {% endfor %}
                 </tbody>
+
             </table>
 
         </div>
+
 
     </div>
 </body>
