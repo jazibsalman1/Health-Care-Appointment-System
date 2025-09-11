@@ -212,5 +212,66 @@ async def update_status(id: int = Form(...)):
     return RedirectResponse(url="/admin", status_code=303)    
 
 
+
+
+# signup 
+
+# Function to create DB if not exists
+with sqlite3.connect("hospital.db") as conn:
+    conn = sqlite3.connect("hospital.db")
+    cur = conn.cursor()
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS signupusers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            email TEXT NOT NULL UNIQUE,
+            password TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
+
+
+
+@app.post("/signup-form")
+async def signup(
+    request: Request,
+    username: str = Form(...),
+    email: str = Form(...),
+    password: str = Form(...),
+    confirm: str = Form(...)
+):
+    if password != confirm:
+        return {"status": "error", "message": "❌ Passwords do not match"}
+
+    try:
+        conn = sqlite3.connect("hospital.db")
+        cur = conn.cursor()
+        cur.execute("INSERT INTO signupusers (username, email, password) VALUES (?, ?, ?)",
+                    (username, email, password))
+        conn.commit()
+        conn.close()
+    except sqlite3.IntegrityError:
+        return {"status": "error", "message": "⚠️ Email already exists"}
+
+    return RedirectResponse(url="/login", status_code=303)
+
+#login 
+@app.post("/login_form")
+async def login_form(request: Request, email: str = Form(...), password: str = Form(...)):
+    conn = sqlite3.connect("hospital.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM signupusers WHERE email = ? AND password = ?", (email, password))
+    user = cur.fetchone()
+    conn.close()
+
+    if user:
+        request.session["email"] = email
+        request.session["password"]=password
+        return RedirectResponse(url="/appoinments", status_code=303)
+    else:
+        return {"status": "error", "message": "Invalid email or password"}
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
