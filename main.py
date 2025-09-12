@@ -283,7 +283,7 @@ async def login_form(request: Request, email: str = Form(...), password: str = F
         return {"status": "error", "message": "Invalid email or password"}
 
 
-# ✅ Doctors table create karna (only once run hoga)
+# admin add doctor
 with sqlite3.connect("hospital.db") as conn:
     cur = conn.cursor()
     cur.execute("""
@@ -301,13 +301,13 @@ with sqlite3.connect("hospital.db") as conn:
     conn.commit()
 
 
-# ✅ Admin page (doctor add form dikhane ke liye)
+
 @app.get("/doc-admin", response_class=HTMLResponse)
 async def admin_add_doctor_page(request: Request):
     return templates.TemplateResponse("admin/ad_doctor.html", {"request": request})
 
 
-# ✅ Doctor add karna (form submit hone ke baad DB me insert hoga)
+
 @app.post("/admin/add_doctor")
 async def add_doctor(
     request: Request,
@@ -331,7 +331,7 @@ async def add_doctor(
     except sqlite3.IntegrityError as e:
         return {"status": "error", "message": f"⚠️ {str(e)}"}
 
-    # doctor add hone ke baad list page par redirect
+ 
     return RedirectResponse(url="/find_doctor", status_code=303)
 
 
