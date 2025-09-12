@@ -73,9 +73,19 @@ async def appoinments(request: Request):
         {"request": request, "appointments": appointments}
     )
 
-@app.get("/find_doctor")
-async def find_doctor(request: Request):
-    return templates.TemplateResponse("find_doctors.html", {"request": request})
+@app.get("/find_doctor", response_class=HTMLResponse)
+async def find_doctors(request: Request):
+    conn = sqlite3.connect("hospital.db")
+    conn.row_factory = sqlite3.Row  # so we can use dict-like access
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM doctor")
+    doctors = cur.fetchall()
+    conn.close()
+
+    return templates.TemplateResponse("find_doctors.html", {
+        "request": request,
+        "doctors": doctors
+    })
 
 @app.get("/book_appoinment")
 async def book_appointment(request: Request):
@@ -271,6 +281,58 @@ async def login_form(request: Request, email: str = Form(...), password: str = F
         return RedirectResponse(url="/appoinments", status_code=303)
     else:
         return {"status": "error", "message": "Invalid email or password"}
+
+
+# ✅ Doctors table create karna (only once run hoga)
+with sqlite3.connect("hospital.db") as conn:
+    cur = conn.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS doctor (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        specialty TEXT NOT NULL,
+        location TEXT NOT NULL,
+        timings TEXT NOT NULL,
+        fee INTEGER NOT NULL,
+        experience TEXT NOT NULL,
+        avatar TEXT NOT NULL
+    )
+    """)
+    conn.commit()
+
+
+# ✅ Admin page (doctor add form dikhane ke liye)
+@app.get("/doc-admin", response_class=HTMLResponse)
+async def admin_add_doctor_page(request: Request):
+    return templates.TemplateResponse("admin/ad_doctor.html", {"request": request})
+
+
+# ✅ Doctor add karna (form submit hone ke baad DB me insert hoga)
+@app.post("/admin/add_doctor")
+async def add_doctor(
+    request: Request,
+    name: str = Form(...),
+    specialty: str = Form(...),
+    location: str = Form(...),
+    timings: str = Form(...),
+    fee: int = Form(...),
+    experience: str = Form(...),
+    avatar: str = Form(...)
+):
+    try:
+        conn = sqlite3.connect("hospital.db")
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO doctor (name, specialty, location, timings, fee, experience, avatar)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (name, specialty, location, timings, fee, experience, avatar))
+        conn.commit()
+        conn.close()
+    except sqlite3.IntegrityError as e:
+        return {"status": "error", "message": f"⚠️ {str(e)}"}
+
+    # doctor add hone ke baad list page par redirect
+    return RedirectResponse(url="/find_doctor", status_code=303)
 
 
 if __name__ == "__main__":

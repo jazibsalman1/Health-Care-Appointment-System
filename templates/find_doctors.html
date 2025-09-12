@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Doctors</title>
-  <link rel="stylesheet" href="/static/style.css">
-      <link rel="stylesheet" href="/static/footer.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Doctors</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/footer.css" />
 </head>
 <body>
-        {% include "nav.html" %}
-        <!-- Find Doctors Page -->
-        <div id="doctors" class="page">
-            <h2>Find Doctors</h2>
+  {% include "nav.html" %}
 
-         
-            <!-- Doctors List -->
-            <div class="doctors-grid">
-                <div class="doctor-card">
-                    <div class="doctor-avatar">👨‍⚕️</div>
-                    <div class="doctor-info">
-                        <h3>Dr. Ahmed Khan</h3>
-                        <p><strong>Cardiologist</strong></p>
-                        <p>📍 Karachi, Pakistan</p>
-                        <p>🕐 Mon-Fri: 9AM-5PM</p>
-                        <p>💰 Consultation: Rs. 2,500</p>
-                       
-                        <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">15+ years experience</p>
-                        <div style="margin-top: 1rem;">
-                           <a href="/book_appoinment"> <button class="btn btn-primary" style="width: 100%;">Book
-                                Appointment</button></a>
-                        </div>
-                    </div>
-                </div>
+  <div id="doctors" class="page">
+    <h2>Find Doctors</h2>
 
-
-                
-            </div>
+    <div class="doctors-grid">
+      {% for doctor in doctors %}
+      <div class="doctor-card">
+        <div class="doctor-avatar">{{ doctor["avatar"] }}</div>
+        <div class="doctor-info">
+          <h3>Dr. {{ doctor["name"] }}</h3>
+          <p><strong>{{ doctor["specialty"] }}</strong></p>
+          <p>📍 {{ doctor["location"] }}</p>
+          <p>🕐 {{ doctor["timings"] }}</p>
+          <p>💰 Consultation: Rs. {{ doctor["fee"] }}</p>
+          <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">
+            {{ doctor["experience"] }}
+          </p>
+          <div style="margin-top: 1rem;">
+            <a href="/book_appoinment">
+              <button class="btn btn-primary" style="width: 100%;">Book Appointment</button>
+            </a>
+          </div>
         </div>
-          {% include "footer.html" %}
+      </div>
+      {% else %}
+      <p>No doctors found.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% include "footer.html" %}
 </body>
 </html>

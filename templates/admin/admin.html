@@ -6,10 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin — Appointments</title>
     <link rel="stylesheet" href="/static/admin.css" />
+<style>
+     nav {
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    margin: 1rem auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
 
+  nav ol {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    flex: 1;
+  }
+
+  nav a {
+    display: block;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  nav a:hover {
+    background: white;
+    color: #4e73df;
+    transform: translateY(-2px);
+  }
+</style>
 </head>
 
 <body>
+    <nav>
+        <ol><li><a href="/admin">Admin Home</a></li>
+        <li><a href="/doc-admin">Doctor Add</a></li></ol>
+    </nav>
     <div id="appointments" class="page"></div>
     <div class="container">
         <div class="header">
