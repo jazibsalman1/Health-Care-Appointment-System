@@ -3,3 +3,4 @@ uvicorn
 authlib
 jinja2
 python-dotenv
+itsdangerous
