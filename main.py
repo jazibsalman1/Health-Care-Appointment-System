@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.middleware.sessions import SessionMiddleware
 import uvicorn
 import sqlite3
+import requests
 
 app = FastAPI()
 app.add_middleware(SessionMiddleware, secret_key="supersecretkey")
@@ -43,11 +44,11 @@ with sqlite3.connect("hospital.db") as conn:
 # --- Routes ---
 @app.get("/")
 async def index_page(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(requests, "index.html", {"request": request})
 
 @app.get("/login")
 async def login_page(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse(requests, "login.html", {"request": request})
 
 
 
@@ -56,7 +57,7 @@ async def login_page(request: Request):
 
 @app.get("/signup")
 async def signup_page(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
+    return templates.TemplateResponse(requests, "signup.html", {"request": request})
 
 @app.get("/appoinments")
 async def appoinments(request: Request):
@@ -68,7 +69,7 @@ async def appoinments(request: Request):
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM appointments WHERE email = ?", (user_email,))
             appointments = cursor.fetchall()
-    return templates.TemplateResponse(
+    return templates.TemplateResponse(requests, 
         "appoinments.html",
         {"request": request, "appointments": appointments}
     )
@@ -82,14 +83,14 @@ async def find_doctors(request: Request):
     doctors = cur.fetchall()
     conn.close()
 
-    return templates.TemplateResponse("find_doctors.html", {
+    return templates.TemplateResponse(requests, "find_doctors.html", {
         "request": request,
         "doctors": doctors
     })
 
 @app.get("/book_appoinment")
 async def book_appointment(request: Request):
-    return templates.TemplateResponse("book_appoinment.html", {"request": request})
+    return templates.TemplateResponse(requests, "book_appoinment.html", {"request": request})
 
 # --- Insert new appointment ---
 @app.post("/submit_booking")
@@ -151,7 +152,7 @@ async def update_booking_form(request: Request, id: int):
     if not appointment:
         return HTMLResponse("<h3>Appointment not found or not yours!</h3>")
 
-    return templates.TemplateResponse(
+    return templates.TemplateResponse(requests, 
         "update_appoinment.html",
         {"request": request, "appointment": appointment}
     )
@@ -198,7 +199,7 @@ async def admin_page(request: Request):
     rows = cursor.fetchall()
     conn.close()
 
-    return templates.TemplateResponse("admin/admin.html", {
+    return templates.TemplateResponse(requests, "admin/admin.html", {
         "request": request,
         "appointments": rows
     })
@@ -304,7 +305,7 @@ with sqlite3.connect("hospital.db") as conn:
 
 @app.get("/doc-admin", response_class=HTMLResponse)
 async def admin_add_doctor_page(request: Request):
-    return templates.TemplateResponse("admin/ad_doctor.html", {"request": request})
+    return templates.TemplateResponse(requests, "admin/ad_doctor.html", {"request": request})
 
 
 
